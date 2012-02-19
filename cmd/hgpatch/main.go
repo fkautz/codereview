@@ -6,7 +6,7 @@ package main
 
 import (
 	"bytes"
-	"code.google.com/p/go.codereview/patch"
+	"errors"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -15,6 +15,8 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+
+	"code.google.com/p/go.codereview/patch"
 )
 
 var checkSync = flag.Bool("checksync", true, "check whether repository is out of sync")
@@ -195,7 +197,7 @@ func mkdirAll(path string, perm os.FileMode) error {
 		if dir.IsDir() {
 			return nil
 		}
-		return &os.PathError{"mkdir", path, os.ENOTDIR}
+		return &os.PathError{"mkdir", path, errors.New("not a directory")}
 	}
 
 	i := len(path)
@@ -328,7 +330,7 @@ var lookPathCache = make(map[string]string)
 // It provides input on standard input to the command.
 func run(argv []string, input []byte) (out string, err error) {
 	if len(argv) < 1 {
-		return "", &runError{dup(argv), os.EINVAL}
+		return "", &runError{dup(argv), os.ErrInvalid}
 	}
 
 	prog, ok := lookPathCache[argv[0]]
