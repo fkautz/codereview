@@ -186,7 +186,9 @@ func main() {
 // make parent directory for name, if necessary
 func makeParent(name string) {
 	parent, _ := filepath.Split(name)
-	chk(mkdirAll(parent, 0755))
+	if parent != "" {
+		chk(mkdirAll(parent, 0755))
+	}
 }
 
 // Copy of os.MkdirAll but adds to undo log after
