@@ -40,12 +40,20 @@ func (set *Set) Apply(readFile func(string) ([]byte, error)) ([]Op, error) {
 			if f.Src != "" {
 				old, err = readFile(f.Src)
 				if err != nil {
-					return nil, &os.PathError{string(f.Verb), f.Src, err}
+					return nil, &os.PathError{
+						Op:   string(f.Verb),
+						Path: f.Src,
+						Err:  err,
+					}
 				}
 			}
 			o.Data, err = f.Diff.Apply(old)
 			if err != nil {
-				return nil, &os.PathError{string(f.Verb), f.Src, err}
+				return nil, &os.PathError{
+					Op:   string(f.Verb),
+					Path: f.Src,
+					Err:  err,
+				}
 			}
 		}
 	}

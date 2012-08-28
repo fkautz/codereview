@@ -199,7 +199,7 @@ func mkdirAll(path string, perm os.FileMode) error {
 		if dir.IsDir() {
 			return nil
 		}
-		return &os.PathError{"mkdir", path, errors.New("not a directory")}
+		return &os.PathError{Op: "mkdir", Path: path, Err: errors.New("not a directory")}
 	}
 
 	i := len(path)
