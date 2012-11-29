@@ -7,3 +7,4 @@ to install hgpatch, by doing
 	go get code.google.com/p/go.codereview/cmd/hgpatch
 
 To submit changes to this repository, see http://golang.org/doc/contribute.html.
+
