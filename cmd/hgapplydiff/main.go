@@ -22,7 +22,7 @@ import (
 var checkSync = flag.Bool("checksync", true, "check whether repository is out of sync")
 
 func usage() {
-	fmt.Fprintf(os.Stderr, "usage: hgpatch [options] [patchfile]\n")
+	fmt.Fprintf(os.Stderr, "usage: hgapplydiff [options] [patchfile]\n")
 	flag.PrintDefaults()
 	os.Exit(2)
 }
