@@ -15,10 +15,6 @@ import (
 )
 
 func gitSHA1(data []byte) []byte {
-	if len(data) == 0 {
-		// special case: 0 length is all zeros sum
-		return make([]byte, 20)
-	}
 	h := sha1.New()
 	fmt.Fprintf(h, "blob %d\x00", len(data))
 	h.Write(data)
