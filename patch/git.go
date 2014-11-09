@@ -6,11 +6,11 @@ package patch
 
 import (
 	"bytes"
-	"code.google.com/p/go.codereview/git85"
 	"compress/zlib"
 	"crypto/sha1"
 	"errors"
 	"fmt"
+	"golang.org/x/codereview/git85"
 	"io"
 )
 
