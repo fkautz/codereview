@@ -10,7 +10,7 @@ import (
 	"crypto/sha1"
 	"errors"
 	"fmt"
-	"golang.org/x/codereview/git85"
+	"github.com/fkautz/codereview/git85"
 	"io"
 )
 

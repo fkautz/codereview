@@ -16,7 +16,7 @@ import (
 	"sort"
 	"strings"
 
-	"golang.org/x/codereview/patch"
+	"github.com/fkautz/codereview/patch"
 )
 
 var checkSync = flag.Bool("checksync", true, "check whether repository is out of sync")
